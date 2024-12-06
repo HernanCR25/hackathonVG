@@ -1,0 +1,35 @@
+# kubectl apply -f Deploy_be.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-hernan-chumpitaz-deployment
+  namespace: hernan-chumpitaz-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend-hernan-chumpitaz-deployment
+  template:
+    metadata:
+      labels:
+        app: backend-hernan-chumpitaz-deployment
+    spec:
+      containers:
+      - name: backend-hernan-chumpitaz-deployment
+        image: hernancr/msvg-be
+        env:
+        - name: db-host
+          valueFrom:
+            configMapKeyRef:
+              name: hernan-chumpitaz-configmap
+              key: db-host
+        - name: db-username
+          valueFrom:
+            configMapKeyRef:
+              name: hernan-chumpitaz-configmap
+              key: db-username
+        - name: db-password
+          valueFrom:
+            configMapKeyRef:
+              name: hernan-chumpitaz-configmap
+              key: db-password

@@ -1,0 +1,12 @@
+# kubectl apply -f ConfigMap.yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hernan-chumpitaz-configmap
+  namespace: hernan-chumpitaz-namespace
+data:
+  app-config: activo
+  db-host: r2dbc:postgresql://ep-muddy-dust-a52fckvk.us-east-2.aws.neon.tech:5432/neondb?sslmode=require
+  db-username: neondb_owner
+  db-password: 7neyBO0FmpJt
+  url_backend: https://didactic-space-giggle-jjqvgwqqpv2rqr-8085.app.github.dev/cicloVida

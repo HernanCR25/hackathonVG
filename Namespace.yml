@@ -1,0 +1,5 @@
+# kubectl apply -f Namespace.yml (yml)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hernan-chumpitaz-namespace

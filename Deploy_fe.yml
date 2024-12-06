@@ -1,0 +1,40 @@
+# kubectl apply -f Deploy_fe.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-hernan-chumpitaz-deployment
+  namespace: hernan-chumpitaz-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend-hernan-chumpitaz-deployment
+  template:
+    metadata:
+      labels:
+        app: frontend-hernan-chumpitaz-deployment
+    spec:
+      containers:
+      - name: frontend-hernan-chumpitaz-deployment
+        image: hernancr/msvg-fe
+        env:
+        - name: db-host
+          valueFrom:
+            configMapKeyRef:
+              name: hernan-chumpitaz-configmap
+              key: db-host
+        - name: db-username
+          valueFrom:
+            configMapKeyRef:
+              name: hernan-chumpitaz-configmap
+              key: db-username
+        - name: db-password
+          valueFrom:
+            configMapKeyRef:
+              name: hernan-chumpitaz-configmap
+              key: db-password
+        - name: url_backend
+          valueFrom:
+            configMapKeyRef:
+              name: hernan-chumpitaz-configmap
+              key: url_backend
